@@ -38,17 +38,23 @@ const imgs = [
     slide.classList.add('show');
   }
 
-  let timerId = 0;
+  let timerId = null;
+  let timerRunning = false;
   
   function startSlideshow() {
+    if(timerRunning === true) {
+      return
+    }
     timerId = setInterval(
       nextSlide,
       2000,
     );
+    timerRunning = true;
   };
 
   function stopSlideshow() {
     clearInterval(timerId);
+    timerRunning = false;
   };
 
   function rightSlideshow() {
